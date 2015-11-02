@@ -1,13 +1,20 @@
 #ignore all *.exe
 *.exe
-#ignore debug directory but not the one in current directory,and ignore all file of debug directory in current path except *.dll 
+#ignore debug directory but not the one in current directory,
+#and ignore all file of debug directory in current path except *.dll 
+#also not ignore the x64 debug
 debug/
 !/debug/
+# not ignore it
+!/x64/debug/ 
 /debug/*
 !debug/*dll
+
 #ignore release
 release/
 !/release/
+# not ignore it
+!/x64/release/
 /release/*
 !release/*dll
 #sdf file
