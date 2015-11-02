@@ -6,22 +6,26 @@
 debug/
 !/debug/
 /debug/*
-!debug/*dll
+
 # for x64 debug
 !/x64/debug/ 
 /x64/debug/*
 !/x64/debug/*dll
 
+!debug/*.dll
+
 #ignore release
 release/
 !/release/
 /release/*
-!release/*dll
+
 
 # for x64
 !/x64/release/ 
 /x64/release/*
 !/x64/release/*dll
+
+!release/*dll
 
 #sdf file
 *.sdf
