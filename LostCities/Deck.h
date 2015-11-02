@@ -11,6 +11,7 @@ namespace LC{
 //	class _declspec(dllimport) Deck;
 //#endif
 
+
 	class Deck{
 	public:
 		std::list<Card> cardList;
