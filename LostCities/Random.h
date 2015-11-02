@@ -5,7 +5,11 @@
 #include <stdio.h>
 
 namespace LC{
+//#ifdef DLL_FILE
 	class _declspec(dllexport) Random;
+//#else
+//	class _declspec(dllimport) Random;
+//#endif
 	class Random{
 	public:
 		static void init(){

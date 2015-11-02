@@ -4,7 +4,7 @@ namespace LC{
 //#ifdef DLL_FILE
 	class _declspec(dllexport) Card;
 //#else
-	//class _declspec(dllimport) Card;
+//	class _declspec(dllimport) Card;
 //#endif
 	
 	class Card{

@@ -6,7 +6,11 @@
 #include "Player.h"
 using ErrorMsg = int;
 namespace LC{
+//#ifdef DLL_FILE
 	class _declspec(dllexport) LCGame;
+//#else
+//	class _declspec(dllimport) LCGame;
+//#endif
 
 	class LCGame{
 	public:

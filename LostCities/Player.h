@@ -4,7 +4,11 @@
 #include "Deck.h"
 #include <string>
 namespace LC{
+//#ifdef DLL_FILE
 	class _declspec(dllexport) Player;
+//#else
+//	class _declspec(dllimport) Player;
+//#endif
 
 	class Player{
 	public:

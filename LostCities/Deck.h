@@ -5,7 +5,11 @@
 #include <iostream>
 
 namespace LC{
+//#ifdef DLL_FILE
 	class _declspec(dllexport) Deck;
+//#else
+//	class _declspec(dllimport) Deck;
+//#endif
 
 	class Deck{
 	public:
