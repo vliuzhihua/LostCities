@@ -1,20 +1,15 @@
 #ignore all *.exe
 *.exe
+
 #ignore debug directory but not the one in current directory,
 #and ignore all file of debug directory in current path except *.dll 
 #also not ignore the x64 debug
 
+//ignore Debug
 debug/
 !/debug/
 /debug/*
 !/debug/*.dll
-
-# for x64 debug
-!/x64/debug/
-/x64/debug/*
-!/x64/debug/*.dll
-
-
 
 #ignore release
 release/
@@ -22,17 +17,26 @@ release/
 /release/*
 !/release/*.dll
 
-# for x64
-!/x64/*.dll
+
+#delete all in x64 2015/11/3
+/x64/*
+
+#not ignore for x64 debug 2015/11/3
+!/x64/debug/
+/x64/debug/*
+!/x64/debug/*.dll
+
+
+#not ignore for x64 Release 2015/11/3
 !/x64/release/
 /x64/release/*
 !/x64/release/*dll
 
 
-
 #sdf file
 *.sdf
 *.opensdf
+
 #pdb file
 *.pdb
 

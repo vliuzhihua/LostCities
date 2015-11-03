@@ -74,7 +74,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>F:/enviroment/boost_1_57_0;../LostCities;$(IncludePath)</IncludePath>
-    <LibraryPath>F:/enviroment/boost_1_57_0/stage;../Debug;$(LibraryPath)</LibraryPath>
+    <LibraryPath>F:/enviroment/boost_1_57_0/stage/lib;../x64/Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
