@@ -23,6 +23,7 @@ release/
 !/release/*.dll
 
 # for x64
+!/x64/*.dll
 !/x64/release/
 /x64/release/*
 !/x64/release/*dll
