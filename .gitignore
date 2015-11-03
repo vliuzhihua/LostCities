@@ -3,29 +3,31 @@
 #ignore debug directory but not the one in current directory,
 #and ignore all file of debug directory in current path except *.dll 
 #also not ignore the x64 debug
+
 debug/
 !/debug/
 /debug/*
+!/debug/*.dll
 
 # for x64 debug
-!/x64/debug/ 
+!/x64/debug/
 /x64/debug/*
-!/x64/debug/*dll
+!/x64/debug/*.dll
 
-!debug/*.dll
+
 
 #ignore release
 release/
 !/release/
 /release/*
-
+!/release/*.dll
 
 # for x64
-!/x64/release/ 
+!/x64/release/
 /x64/release/*
 !/x64/release/*dll
 
-!release/*dll
+
 
 #sdf file
 *.sdf
