@@ -2,18 +2,19 @@
 #define DLL_FILE
 #include "Deck.h"
 #include "Random.h"
+#include "config.h"
 using namespace LC;
 //namespace LC{
-	Deck::Deck(){
-		cardList.clear();
+	Deck::Deck():list<Card>(){
+		this->clear();
 	}
 
 	void Deck::shuffle(){
-		int sz = cardList.size();
+		int sz = this->size();
 		Card* cardTmp = new Card[sz];
 		std::list<Card>::iterator it;
 		int c = 0;
-		for (it = cardList.begin(); it != cardList.end(); it++){
+		for (it = this->begin(); it != this->end(); it++){
 			cardTmp[c] = *it;
 			c++;
 		}
@@ -23,43 +24,48 @@ using namespace LC;
 			cardTmp[i] = cardTmp[val];
 			cardTmp[val] = tc;
 		}
-		cardList.clear();
+		this->clear();
 		for (int i = 0; i < sz; i++){
-			cardList.push_back(cardTmp[i]);
+			this->push_back(cardTmp[i]);
 		}
+		delete[] cardTmp;
 	}
 
 
 
 	Card Deck::top(){
-		return cardList.front();
+		//list<int> ls;
+		
+		return this->front();
 	}
-
+	Card Deck::bottom(){
+		return this->back();
+	}
 	void Deck::pop_bottom(){
-		cardList.pop_front();
+		this->pop_front();
 	}
 	void Deck::push_top(Card &ca){
-		cardList.push_front(ca);
+		this->push_front(ca);
 	}
 	void Deck::pop_top(){
-		cardList.pop_front();
+		this->pop_front();
 	}
 	void Deck::push_bottom(Card &ca){
-		cardList.push_back(ca);
+		this->push_back(ca);
 	}
 	
 	void Deck::delete_card(Card& ca){
-		cardList.remove(ca);
+		this->remove(ca);
 	}
-	int Deck::size(){
-		return cardList.size();
-	}
+	//int Deck::size(){
+	//	return this->size();
+	//}
 	int Deck::get_val(){
-		std::list<Card>::iterator it;
+		Deck::iterator it;
 		bool countMul = true;
 		int mulFactor = 1;
 		int val = 0;
-		for (it = cardList.begin(); it != cardList.end(); it++){
+		for (it = this->begin(); it != this->end(); it++){
 			if (countMul){
 				if (it->number == 1){
 					mulFactor++;

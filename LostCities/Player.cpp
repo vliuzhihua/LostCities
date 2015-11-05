@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "config.h"
 
 
 using namespace LC;
@@ -10,4 +11,8 @@ int Player::cal_val(){
 	}
 	return val;
 
+}
+
+Player::Player(std::string id){
+	playerId = id;
 }

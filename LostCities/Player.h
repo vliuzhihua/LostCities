@@ -16,6 +16,7 @@ namespace LC{
 		Deck hand;
 		Deck playedDeck[5];
 		int cal_val();
+		Player(std::string id = "");
 	};
 }
 #endif

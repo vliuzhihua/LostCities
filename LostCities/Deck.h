@@ -11,17 +11,16 @@ namespace LC{
 //	class _declspec(dllimport) Deck;
 //#endif
 
-
-	class Deck{
+	//inhere
+	class Deck :public std::list<Card>{
 	public:
-		std::list<Card> cardList;
-
 		//void init(); 
 		Deck();
 
 		void shuffle();
 
 		Card top();
+		Card bottom();
 
 		void pop_bottom();
 		void push_bottom(Card &ca);
@@ -31,12 +30,12 @@ namespace LC{
 
 		void delete_card(Card& ca);
 
-		int size();
+		//int size();
 		int get_val();
 		void show(){
-			int sz = cardList.size();
-			std::list<Card>::iterator it;
-			for (it = cardList.begin(); it != cardList.end(); it++){
+			int sz = this->size();
+			Deck::iterator it;
+			for (it = this->begin(); it != this->end(); it++){
 				std::cout << it->number << "   " << it->color << std::endl;
 			}
 			std::cout << std::endl;

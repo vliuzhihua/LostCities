@@ -1,8 +1,10 @@
 #define DLL_FILE
 #include "Card.h"
+#include "config.h"
 
 using namespace LC;
 //namespace LC{
+std::string Card::colorName[5] = { "red", "blue", "white", "yellow", "green" };
 	Card::Card(){
 
 	}

@@ -14,24 +14,27 @@ namespace LC{
 
 	class LCGame{
 	public:
-		Deck remain_deck;
-		Deck discard_deck[5];
-		Player player[2];
-		int whoPlay;
+		Deck remain_deck;	//
+		Deck discard_deck[5];//discard deck
+		Player player[2];	//two player in the game just to save the player status in game.
+		int whoPlay;	//this time who play card
 		int status;//-1 indicate no people win, else indicate subscript win
-		void init(int whoStart);
+
+		LCGame();	//default constructor
+		void init(Player& p1, Player& p2, int whoStart = 0);
 		bool playerDiscard(Player& p, Card& ca, ErrorMsg* em);
 
 		bool playerPlay(Player& p, Card& ca, ErrorMsg* em);
 
-		void draw(Player& p, int dn /*discard deck subscript*/);
+		bool draw(Player& p, int dn = -1 /*discard deck subscript*/);	//if dn == -1,then we draw card from remain_deck.
 
 		void updateStatus();
 		
-		bool checkStatus(int* winner);//true indicate terminal the game, else winner
+		bool checkStatus(int* winner);//true indicate terminal the game, else continue
 		
+		//void addPlayer(Player &player);	//add player to the game;
 
-
+		void start();
 
 	};
 }
