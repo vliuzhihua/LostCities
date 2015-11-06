@@ -27,8 +27,8 @@ int main(){
 		//lcg.start();//all player draw card;
 	
 		for (int i = 0; i < 8; i++){
-			lcg.draw(p[0]);
-			lcg.draw(p[1]);
+			lcg.draw(&p[0]);
+			lcg.draw(&p[1]);
 		}
 
 
@@ -42,7 +42,7 @@ int main(){
 				oldRound = round;
 			}
 
-			Player& tp = p[rand() % 2]; //determine who play
+			Player* tp = &p[rand() % 2]; //determine who play
 			int playToWhere = rand() % 2;
 
 			ErrorMsg em;
@@ -53,7 +53,7 @@ int main(){
 				//play normal
 				Deck::iterator it;
 				int playedOutOrNot = 0;
-				for (it = tp.hand.begin(); it != tp.hand.end(); it++){
+				for (it = tp->hand.begin(); it != tp->hand.end(); it++){
 					if (lcg.playerPlay(tp, *it, &em)){
 						playedOutOrNot = 1;
 						break;
@@ -66,7 +66,7 @@ int main(){
 			}
 			else{
 				//play to discard deck
-				if (!lcg.playerDiscard(tp, tp.hand.top(), &em)){
+				if (!lcg.playerDiscard(tp, tp->hand.top(), &em)){
 					continue;
 				}
 			}

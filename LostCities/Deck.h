@@ -23,15 +23,15 @@ namespace LC{
 		Card bottom();
 
 		void pop_bottom();
-		void push_bottom(Card &ca);
+		void push_bottom(const Card &ca);
 
 		void pop_top();
-		void push_top(Card &ca);
+		void push_top(const Card &ca);
 
-		void delete_card(Card& ca);
+		void delete_card(const Card& ca);
 
 		//int size();
-		int get_val();
+		int get_val()const ;
 		void show(){
 			int sz = this->size();
 			Deck::iterator it;

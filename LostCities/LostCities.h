@@ -21,14 +21,14 @@ namespace LC{
 		int status;//-1 indicate no people win, else indicate subscript win
 
 		LCGame();	//default constructor
-		void init(Player& p1, Player& p2, int whoStart = 0);
-		bool playerDiscard(Player& p, Card& ca, ErrorMsg* em);
+		void init(const Player& p1, const Player& p2, const int whoStart = 0);
+		bool playerDiscard(Player* p, const Card& ca, ErrorMsg* em);
 
-		bool playerPlay(Player& p, Card& ca, ErrorMsg* em);
+		bool playerPlay(Player* p, const Card& ca, ErrorMsg* em);
 
-		bool draw(Player& p, int dn = -1 /*discard deck subscript*/);	//if dn == -1,then we draw card from remain_deck.
+		bool draw(Player* p, const int dn = -1 /*discard deck subscript*/);	//if dn == -1,then we draw card from remain_deck.
 
-		void updateStatus(Player& p0, Player& p1);
+		void updateStatus(const Player& p0, const Player& p1);
 		
 		bool checkStatus(int* winner);//true indicate terminal the game, else continue
 		

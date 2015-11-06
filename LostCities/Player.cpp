@@ -4,7 +4,7 @@
 
 using namespace LC;
 
-int Player::cal_val(){
+int Player::cal_val()const{ 
 	int val = 0;
 	for (int i = 0; i < 5; i++){
 		val += playedDeck[i].get_val();

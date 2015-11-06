@@ -44,24 +44,24 @@ using namespace LC;
 	void Deck::pop_bottom(){
 		this->pop_front();
 	}
-	void Deck::push_top(Card &ca){
+	void Deck::push_top(const Card &ca){
 		this->push_front(ca);
 	}
 	void Deck::pop_top(){
 		this->pop_front();
 	}
-	void Deck::push_bottom(Card &ca){
+	void Deck::push_bottom(const Card &ca){
 		this->push_back(ca);
 	}
 	
-	void Deck::delete_card(Card& ca){
+	void Deck::delete_card(const Card& ca){
 		this->remove(ca);
 	}
 	//int Deck::size(){
 	//	return this->size();
 	//}
-	int Deck::get_val(){
-		Deck::iterator it;
+	int Deck::get_val()const{
+		Deck::const_iterator it;
 		bool countMul = true;
 		int mulFactor = 1;
 		int val = 0;

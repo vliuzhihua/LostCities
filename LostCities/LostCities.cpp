@@ -4,7 +4,7 @@
 #include "config.h"
 using namespace LC;
 	
-void LCGame::init(Player& p1, Player& p2, int whoStart){
+void LCGame::init(const Player& p1, const Player& p2, const int whoStart){
 	Random::init(); //important!!!!  need first to init random generator, make sure it work	
 	whoPlay = whoStart;
 	status = -1;
@@ -25,14 +25,14 @@ void LCGame::init(Player& p1, Player& p2, int whoStart){
 #endif
 }
 //player play card
-bool LCGame::playerDiscard(Player& p, Card& ca, ErrorMsg* em){
-	if (p.playerId == player[whoPlay].playerId){
+bool LCGame::playerDiscard(Player* p, const Card& ca, ErrorMsg* em){
+	if (p->playerId == player[whoPlay].playerId){
 //debug output
 #ifdef DEBUG_OUTPUT
-		std::cout << "p-" << p.playerId << " discard " << Card::colorName[ca.color] << ":" << ca.number << std::endl;
+		std::cout << "p-" << p->playerId << " discard " << Card::colorName[ca.color] << ":" << ca.number << std::endl;
 #endif	
 		discard_deck[ca.color].push_bottom(ca);
-		p.hand.delete_card(ca);
+		p->hand.delete_card(ca);//note that delete will redirect the value in ca
 		//update player info in game
 		//player[whoPlay] = p;
 		whoPlay = (whoPlay + 1) % 2;
@@ -43,16 +43,16 @@ bool LCGame::playerDiscard(Player& p, Card& ca, ErrorMsg* em){
 		return false;
 	}
 }
-bool LCGame::playerPlay(Player& p, Card& ca, ErrorMsg* em){
-	if (p.playerId == player[whoPlay].playerId){
+bool LCGame::playerPlay(Player* p, const Card& ca, ErrorMsg* em){
+	if (p->playerId == player[whoPlay].playerId){
 		
-		if (p.playedDeck[ca.color].size() == 0 || (p.playedDeck[ca.color].size() != 0 && p.playedDeck[ca.color].bottom().number <= ca.number)){
+		if (p->playedDeck[ca.color].size() == 0 || (p->playedDeck[ca.color].size() != 0 && p->playedDeck[ca.color].bottom().number <= ca.number)){
 //debug output
 #ifdef DEBUG_OUTPUT
-			std::cout << "p-" << p.playerId << " play " << Card::colorName[ca.color] << ":" << ca.number << std::endl;
+			std::cout << "p-" << p->playerId << " play " << Card::colorName[ca.color] << ":" << ca.number << std::endl;
 #endif			
-			p.playedDeck[ca.color].push_bottom(ca);
-			p.hand.delete_card(ca);
+			p->playedDeck[ca.color].push_bottom(ca);
+			p->hand.delete_card(ca);
 			//update player info in game
 			//player[whoPlay] = p;
 			whoPlay = (whoPlay + 1) % 2;
@@ -70,40 +70,41 @@ bool LCGame::playerPlay(Player& p, Card& ca, ErrorMsg* em){
 }
 
 
-bool LCGame::draw(Player& p, int dn /*discard deck subscript*/){
-	if (p.hand.size() <= 7){
+bool LCGame::draw(Player* p, const int dn /*discard deck subscript*/){
+	if (p->hand.size() <= 7){
 		if (dn == -1){//if dn equal -1, then we draw card from remain_deck
 			if (remain_deck.size() == 0){//no card to draw
 				return false;
 			}
-			p.hand.push_bottom(remain_deck.top());
+			p->hand.push_bottom(remain_deck.top());
 			remain_deck.pop_top();
 
 			//update player info in game
 			//player[whoPlay] = p;//error
 
 #ifdef DEBUG_OUTPUT
-			std::cout << "p-" << p.playerId << " draw from remain deck " << Card::colorName[p.hand.back().color] << ":" << p.hand.back().number << std::endl;
+			std::cout << "p-" << p->playerId << " draw from remain deck " << Card::colorName[p->hand.back().color] << ":" << p->hand.back().number << std::endl;
 #endif
 		}
 		else{
 			if (discard_deck[dn].size() == 0){//no card to draw
 				return false;
 			}
-			p.hand.push_bottom(discard_deck[dn].top());
+			p->hand.push_bottom(discard_deck[dn].top());
 			discard_deck[dn].pop_top(); 
 
 			//update player info in game
 			//player[whoPlay] = p;
 #ifdef DEBUG_OUTPUT
-			std::cout << "p-" << p.playerId << " draw from discard deck " << dn << " " << Card::colorName[p.hand.back().color] << ":" << p.hand.back().number << std::endl;
+			std::cout << "p-" << p->playerId << " draw from discard deck " << dn << " " \
+				<< Card::colorName[p->hand.back().color] << ":" << p->hand.back().number << std::endl;
 #endif
 		}
 		
 	}
 }
 
-void LCGame::updateStatus(Player& p0, Player& p1){
+void LCGame::updateStatus(const Player& p0, const Player& p1){
 	if (remain_deck.size() == 0){
 		int val[2];
 		val[0] = p0.cal_val();
@@ -135,10 +136,10 @@ LCGame::LCGame(){
 
 }
 void LCGame::start(){
-	for (int i = 0; i < 8; i++){
-		draw(player[0]);
-		draw(player[1]);
-	}
-	std::cout << "game start" << std::endl;
+	//for (int i = 0; i < 8; i++){
+		//draw(player[0]);
+		//draw(player[1]);
+	//}
+	//std::cout << "game start" << std::endl;
 	
 }

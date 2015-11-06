@@ -13,13 +13,30 @@ std::string Card::colorName[5] = { "red", "blue", "white", "yellow", "green" };
 		this->number = number;
 	}
 	bool Card::operator==(const Card& ca){
-	if (this->color == ca.color && this->number == ca.number){
-		return true;
-	}
-	else{
-		return false;
-	}
+		if (this->color == ca.color && this->number == ca.number){
+			return true;
 		}
+		else{
+			return false;
+		}
+	}
+
+	bool Card::operator <(const Card& ca) const{
+		if (this->color < ca.color){
+			return true;
+		}
+		else if (this->color > ca.color){
+			return false;
+		}
+		else{
+			if (this->number < ca.number){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+	}
 
 //}
 
