@@ -1,4 +1,5 @@
-# ðŸ”åŽ
+# ðŸ”å?
 
 ##2015/11/6
-- 
+- ½ñÌìÖÐÎçÊÔÁËÒ»ÏÂ²âÊÔ³ÌÐò£¬ÔËÐÐ10´Î·¢ÏÖ×ÜÊÇÒ»¸öÈË»ñÊ¤£¬¹Ê¶øÈÏÎªÊÇupdateÓÐÎÊÌâ£¬ÐÞ¸Ä¼´ºÃ¡£È»ºóÅäÖÃÁËrelease°æ±¾£¬¿ìËÙ²âÊÔ100´ÎÊäÓ®±ÈÀýÖ®ÀàµÄ¡£
+- È»ºóÄØÈÏÎª½á¹¹ÉÏÀ´ËµplayerÖÃÉíÓÚgame systemÖ®ÍâÁËÃ²ËÆ£¬Õâ¾ÍÊÇÎªÊ²Ã´updateStatus¶¼ÐèÒª´«µÝ½øÈ¥PlayerÊý¾Ý½á¹¹µÄÔ­Òò¡£Òª¸Ä£¬Õâ²»ºÃ¡£¹ØÓÚ²âÊÔ³ÌÐòÊÇ·ñµ½Î»£¬¿´Äã¾õµÃÄØ¡£
