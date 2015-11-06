@@ -28,7 +28,7 @@ namespace LC{
 
 		bool draw(Player& p, int dn = -1 /*discard deck subscript*/);	//if dn == -1,then we draw card from remain_deck.
 
-		void updateStatus();
+		void updateStatus(Player& p0, Player& p1);
 		
 		bool checkStatus(int* winner);//true indicate terminal the game, else continue
 		

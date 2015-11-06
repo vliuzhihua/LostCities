@@ -103,11 +103,11 @@ bool LCGame::draw(Player& p, int dn /*discard deck subscript*/){
 	}
 }
 
-void LCGame::updateStatus(){
+void LCGame::updateStatus(Player& p0, Player& p1){
 	if (remain_deck.size() == 0){
 		int val[2];
-		val[0] = player[0].cal_val();
-		val[1] = player[1].cal_val();
+		val[0] = p0.cal_val();
+		val[1] = p1.cal_val();
 		if (val[0] > val[1]){
 			status = 0;
 		}
