@@ -1,6 +1,9 @@
 #ignore all *.exe
 *.exe
 
+#ignore all *.suo
+*.suo
+
 #ignore debug directory but not the one in current directory,
 #and ignore all file of debug directory in current path except *.dll 
 #also not ignore the x64 debug
