@@ -17,6 +17,7 @@ namespace LC{
 		Deck remain_deck;	//
 		Deck discard_deck[5];//discard deck
 		Player player[2];	//two player in the game just to save the player status in game.
+		Deck playedDeck[2][5];	//the card already played
 		int whoPlay;	//this time who play card
 		int status;//-1 indicate no people win, else indicate subscript win
 
@@ -28,7 +29,7 @@ namespace LC{
 
 		bool draw(Player* p, const int dn = -1 /*discard deck subscript*/);	//if dn == -1,then we draw card from remain_deck.
 
-		void updateStatus(const Player& p0, const Player& p1);
+		void updateStatus();
 		
 		bool checkStatus(int* winner);//true indicate terminal the game, else continue
 		
@@ -36,6 +37,7 @@ namespace LC{
 
 		void start();
 
+		int calValue(int playerId);
 	};
 }
 #endif

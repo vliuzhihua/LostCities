@@ -11,6 +11,7 @@ int main(){
 
 	
 	int countWin[2] = { 0 };
+	//notice that 100 maybe too much for test only
 	for (int tt = 0; tt < 100; tt++){
 		//create two player
 		Player p[2];
@@ -89,14 +90,14 @@ int main(){
 				}
 
 			}
-			lcg.updateStatus(p[0], p[1]);
+			lcg.updateStatus();
 			round++;
 			Sleep(1);
 			//system("pause");
 		}
 		cout << "game end" << endl;
-		cout << "p0: " << p[0].cal_val() << endl;
-		cout << "p1: " << p[1].cal_val() << endl;
+		cout << "p0: " << lcg.calValue(0) << endl;
+		cout << "p1: " << lcg.calValue(1) << endl;
 		cout << "winner is " << winner << endl;
 		countWin[winner]++;
 	}

@@ -46,12 +46,12 @@ bool LCGame::playerDiscard(Player* p, const Card& ca, ErrorMsg* em){
 bool LCGame::playerPlay(Player* p, const Card& ca, ErrorMsg* em){
 	if (p->playerId == player[whoPlay].playerId){
 		
-		if (p->playedDeck[ca.color].size() == 0 || (p->playedDeck[ca.color].size() != 0 && p->playedDeck[ca.color].bottom().number <= ca.number)){
+		if (playedDeck[whoPlay][ca.color].size() == 0 || (playedDeck[whoPlay][ca.color].size() != 0 && playedDeck[whoPlay][ca.color].bottom().number <= ca.number)){
 //debug output
 #ifdef DEBUG_OUTPUT
 			std::cout << "p-" << p->playerId << " play " << Card::colorName[ca.color] << ":" << ca.number << std::endl;
 #endif			
-			p->playedDeck[ca.color].push_bottom(ca);
+			playedDeck[whoPlay][ca.color].push_bottom(ca);
 			p->hand.delete_card(ca);
 			//update player info in game
 			//player[whoPlay] = p;
@@ -104,11 +104,11 @@ bool LCGame::draw(Player* p, const int dn /*discard deck subscript*/){
 	}
 }
 
-void LCGame::updateStatus(const Player& p0, const Player& p1){
+void LCGame::updateStatus(){
 	if (remain_deck.size() == 0){
 		int val[2];
-		val[0] = p0.cal_val();
-		val[1] = p1.cal_val();
+		val[0] = calValue(0);
+		val[1] = calValue(1);
 		if (val[0] > val[1]){
 			status = 0;
 		}
@@ -131,6 +131,13 @@ bool LCGame::checkStatus(int* winner){
 //void LCGame::addPlayer(Player& player){
 //	if ()
 //}
+int LCGame::calValue(int playerId){
+	int val = 0;
+	for (int i = 0; i < 5; i++){
+		val += playedDeck[playerId][i].get_val();
+	}
+	return val;
+}
 
 LCGame::LCGame(){
 
